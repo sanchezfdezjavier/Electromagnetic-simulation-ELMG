@@ -25,9 +25,9 @@ Bz_values = Bx_values;
 for z = axis
     
     for y = axis
-        Bx = @(rhop, phip, zp) (((sin(pi .* rhop / 2) .* cos(3 .* pi .* zp)) .* (cos(phip) .* (z - zp))) ./ ...
-            (1 + (-rhop .* cos(phip)).^2 + (y - rhop .* sin(phip)).^2 + (z - zp).^2)) .* rhop;
-        By = @(rhop, phip, zp) ((sin(pi.*rhop/2).*cos(3.*pi.*zp)).*(sin(phip).*(z-zp)).*rhop) ./...
+        Bx = @(rhop, phip, zp) (((sin(pi .* rhop / 2) .* cos(3 .* pi .* zp./5)) .* (cos(phip) .* (z - zp))) ./ ...
+            ((-rhop.* cos(phip)).^2 + (y - rhop.* sin(phip)).^2 + (z - zp).^2).^(3/2)) .* rhop;
+        By = @(rhop, phip, zp) ((sin(pi.*rhop/2).*cos(3.*pi.*zp./5)).*(sin(phip).*(z-zp)).*rhop) ./...
             (((-rhop.*cos(phip)).^2 + (y-rhop.*sin(phip)).^2 + (z-zp).^2).^(3/2));
         Bz = @(rhop, phip, zp) (sin(pi .* rhop ./ 2) .* cos(3 .* pi .* zp / 5)) ...
             .* ((-sin(phip) .* (y - rhop .* sin(phip)) - cos(phip) .* (-rhop .* cos(phip))) ./ ...
@@ -80,8 +80,4 @@ figure(4);
 plot(z, Bz_axis_lejanos, z, flat_Bz);
 title('Módulo del campo mgnético en el eje z');
 legend('Momento magnético', 'Biot-Savart');
-
-
-
-
 
