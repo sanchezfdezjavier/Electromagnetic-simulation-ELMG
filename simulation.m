@@ -9,7 +9,7 @@ clear
 R = 1;
 z0 = 2.5;
 rho = 1;
-axis = linspace(-2, 2, 10);
+axis = linspace(-10.*R, 10.*R, 40);
 
 %Variables de iteración
 v = 1;
@@ -59,6 +59,27 @@ quiver(x, y, Bx_values, By_values);
 title('Campo magnético en el plano z = 0');
 xlabel('x'); %Revisar que estos label no estén cambiados
 ylabel('y');
+
+% Representación 3D del campo magnético generado
+figure(3);
+quiver3(x, y, z, Bx_values, By_values, Bz_values);
+
+
+%Campo magnético en puntos lejanos
+
+% Constantes
+u = 4.*pi.*10.^(-7);
+m0 = 1;
+
+z = linspace(-10.*R, 10.*R, 1600);
+Bz_axis_lejanos = -(u.*m0)./(2.*pi.*z.^3);
+flat_Bz = reshape(Bz_values.', 1, []);
+
+% Representación gráfica del campo en el eje z en ptos. lejanos
+figure(4);
+plot(z, Bz_axis_lejanos, z, flat_Bz);
+title('Módulo del campo mgnético en el eje z');
+legend('Momento magnético', 'Biot-Savart');
 
 
 
