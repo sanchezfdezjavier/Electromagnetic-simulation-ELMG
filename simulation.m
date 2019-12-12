@@ -9,7 +9,7 @@ clear
 R = 1;
 z0 = 2.5;
 rho = 1;
-axis = linspace(-10.*R, 10.*R, 40);
+axis = linspace(-8.*R, 8.*R, 60);
 
 %Variables de iteración
 v = 1;
@@ -71,7 +71,7 @@ quiver3(x, y, z, Bx_values, By_values, Bz_values);
 u = 4.*pi.*10.^(-7);
 m0 = 1;
 
-z = linspace(-10.*R, 10.*R, 1600);
+z = linspace(-10.*R, 10.*R, 3600);
 Bz_axis_lejanos = -(u.*m0)./(2.*pi.*z.^3);
 flat_Bz = reshape(Bz_values.', 1, []);
 
