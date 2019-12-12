@@ -82,3 +82,12 @@ plot(z, Bz_axis_lejanos, z, flat_Bz);
 title('Módulo del campo mgnético en el eje z');
 legend('Momento magnético', 'Biot-Savart');
 
+%surf
+figure(5);
+surf(x,y, Bz_values);
+
+%contour
+figure(6);
+contour(x,y, Bz_values, 'LineWidth', 1.5);
+
+
