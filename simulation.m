@@ -9,7 +9,7 @@ clear
 R = 1;
 z0 = 2.5;
 rho = 1;
-axis = linspace(-8.*R, 8.*R, 60);
+axis = linspace(-8.*R, 8.*R, 100);
 
 %Variables de iteración
 v = 1;
@@ -47,7 +47,7 @@ end
 %Representación del campo magnético en el plano x = 0
 figure(1);
 [y, z] = meshgrid(axis, axis);
-quiver(y, z, By_values, Bz_values);
+quiver(y, z, By_values, Bz_values, 'LineWidth', 1);
 title('Campo magnético en el plano x = 0');
 xlabel('y'); %Revisar que estos label no estén cambiados
 ylabel('z');
@@ -55,14 +55,14 @@ ylabel('z');
 % Representación del campo magnético B, en el plano z = 0
 figure(2);
 [x, y] = meshgrid(axis, axis);
-quiver(x, y, Bx_values, By_values);
+quiver(x, y, Bx_values, By_values, 'LineWidth', 1);
 title('Campo magnético en el plano z = 0');
 xlabel('x'); %Revisar que estos label no estén cambiados
 ylabel('y');
 
 % Representación 3D del campo magnético generado
 figure(3);
-quiver3(x, y, z, Bx_values, By_values, Bz_values);
+quiver3(x, y, z, Bx_values, By_values, Bz_values, 'LineWidth', 1);
 
 
 %Campo magnético en puntos lejanos
@@ -71,7 +71,7 @@ quiver3(x, y, z, Bx_values, By_values, Bz_values);
 u = 4.*pi.*10.^(-7);
 m0 = 1;
 
-z = linspace(-10.*R, 10.*R, 3600);
+z = linspace(-10.*R, 10.*R, 10000);
 Bz_axis_lejanos = -(u.*m0)./(2.*pi.*z.^3);
 flat_Bz = reshape(Bz_values.', 1, []);
 
